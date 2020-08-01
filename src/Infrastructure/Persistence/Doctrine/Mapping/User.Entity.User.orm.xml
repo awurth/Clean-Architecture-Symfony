@@ -4,7 +4,7 @@
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
   <entity name="App\Domain\User\Entity\User" table="users">
-    <id name="id" column="id" type="string" />
+    <id name="id" column="id" type="guid" />
     <embedded name="email" class="App\Domain\User\ValueObject\Email" use-column-prefix="false" />
     <embedded name="name" class="App\Domain\User\ValueObject\Name" use-column-prefix="false" />
     <field name="password" column="password" />
