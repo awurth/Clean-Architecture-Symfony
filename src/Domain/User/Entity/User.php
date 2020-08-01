@@ -2,6 +2,7 @@
 
 namespace App\Domain\User\Entity;
 
+use App\Domain\User\Contract\PasswordEncoderInterface;
 use App\Domain\User\Message\Register;
 use App\Domain\User\ValueObject\Email;
 use App\Domain\User\ValueObject\Name;
@@ -29,12 +30,16 @@ class User
         $this->createdAt = new DateTimeImmutable();
     }
 
-    public static function createFromRegistrationMessage(Register $register): self
+    public static function createFromRegistrationMessage(Register $register, PasswordEncoderInterface $passwordEncoder): self
     {
-        return new self(
+        $user = new self(
             new Email($register->getEmail()),
             new Name($register->getFirstname(), $register->getLastname())
         );
+
+        $user->password = $passwordEncoder->encodePassword($user, $register->getPlainPassword());
+
+        return $user;
     }
 
     public function id(): string

@@ -2,6 +2,9 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use App\Application\Adapter\PasswordEncoder;
+use App\Domain\User\Contract\PasswordEncoderInterface;
+
 return static function (ContainerConfigurator $configurator) {
     $services = $configurator->services()
         ->defaults()
@@ -19,4 +22,7 @@ return static function (ContainerConfigurator $configurator) {
 
     $services->load('App\\Application\\MessageHandler\\', '../../../src/Application/MessageHandler')
         ->tag('messenger.message_handler');
+
+    $services->set(PasswordEncoder::class)
+        ->alias(PasswordEncoderInterface::class, PasswordEncoder::class);
 };
