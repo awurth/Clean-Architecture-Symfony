@@ -3,6 +3,10 @@ security:
         App\Infrastructure\Symfony\Security\User:
             algorithm: auto
 
+    providers:
+        app_user_provider:
+            id: App\Infrastructure\Symfony\Security\UserProvider
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -10,3 +14,9 @@ security:
         main:
             anonymous: true
             lazy: true
+            guard:
+                authenticators:
+                    - App\Infrastructure\Symfony\Security\FormLoginAuthenticator
+            logout:
+                path: app_logout
+                target: app_login
