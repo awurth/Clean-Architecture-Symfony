@@ -17,7 +17,12 @@ framework:
         buses:
             command.bus:
                 middleware:
+                    - dispatch_after_current_bus
                     - doctrine_transaction
-            query.bus: ~
+            query.bus:
+                middleware:
+                    - dispatch_after_current_bus
             event.bus:
                 default_middleware: allow_no_handlers
+                middleware:
+                    - dispatch_after_current_bus

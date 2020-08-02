@@ -14,8 +14,13 @@ class Email
         $this->email = $email;
     }
 
-    public function email(): string
+    public function toString(): string
     {
         return $this->email;
+    }
+
+    public function __toString(): string
+    {
+        return $this->toString();
     }
 }

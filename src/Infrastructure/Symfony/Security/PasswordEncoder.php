@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Application\Adapter;
+namespace App\Infrastructure\Symfony\Security;
 
 use App\Domain\User\Contract\PasswordEncoderInterface;
-use App\Domain\User\Entity\User;
-use App\Infrastructure\Symfony\Security\User as SymfonySecurityUser;
+use App\Domain\User\Entity\User as DomainUser;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class PasswordEncoder implements PasswordEncoderInterface
@@ -16,8 +15,8 @@ class PasswordEncoder implements PasswordEncoderInterface
         $this->userPasswordEncoder = $userPasswordEncoder;
     }
 
-    public function encodePassword(User $user, string $plainPassword): string
+    public function encodePassword(DomainUser $user, string $plainPassword): string
     {
-        return $this->userPasswordEncoder->encodePassword(new SymfonySecurityUser($user), $plainPassword);
+        return $this->userPasswordEncoder->encodePassword(new User($user), $plainPassword);
     }
 }

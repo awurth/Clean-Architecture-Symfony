@@ -8,6 +8,7 @@ use App\Domain\User\Entity\User;
 use App\Domain\User\Event\Registered;
 use App\Domain\User\Repository\UserRepositoryInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Messenger\Stamp\DispatchAfterCurrentBusStamp;
 
 final class RegisterHandler
 {
@@ -32,6 +33,8 @@ final class RegisterHandler
 
         $this->userRepository->add($user);
 
-        $this->eventBus->dispatch(new Registered($user->id()));
+        $this->eventBus->dispatch(new Registered($user->id()), [
+            new DispatchAfterCurrentBusStamp()
+        ]);
     }
 }
