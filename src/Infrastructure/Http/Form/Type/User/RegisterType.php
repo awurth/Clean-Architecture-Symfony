@@ -3,6 +3,7 @@
 namespace App\Infrastructure\Http\Form\Type\User;
 
 use App\Infrastructure\Http\Form\DataMapper\User\RegisterDataMapper;
+use Rollerworks\Component\PasswordStrength\Validator\Constraints\PasswordStrength;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -26,7 +27,10 @@ final class RegisterType extends AbstractType
                 ]
             ])
             ->add('plainPassword', RepeatedType::class, [
-                'type' => PasswordType::class
+                'type' => PasswordType::class,
+                'constraints' => [
+                    new PasswordStrength(3)
+                ]
             ])
             ->add('firstname', null, [
                 'required' => true,
