@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\User\Message;
+namespace App\Domain\User\Command;
 
 final class Register
 {

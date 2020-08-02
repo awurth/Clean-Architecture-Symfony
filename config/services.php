@@ -20,8 +20,14 @@ return static function (ContainerConfigurator $configurator) {
     $services->load('App\\Infrastructure\\Http\\Action\\', '../../../src/Infrastructure/Http/Action')
         ->tag('controller.service_arguments');
 
-    $services->load('App\\Application\\MessageHandler\\', '../../../src/Application/MessageHandler')
-        ->tag('messenger.message_handler');
+    $services->load('App\\Application\\CommandHandler\\', '../../../src/Application/CommandHandler')
+        ->tag('messenger.message_handler', ['bus' => 'command.bus']);
+
+    $services->load('App\\Application\\QueryHandler\\', '../../../src/Application/QueryHandler')
+        ->tag('messenger.message_handler', ['bus' => 'query.bus']);
+
+    $services->load('App\\Application\\EventHandler\\', '../../../src/Application/EventHandler')
+        ->tag('messenger.message_handler', ['bus' => 'event.bus']);
 
     $services->set(PasswordEncoder::class)
         ->alias(PasswordEncoderInterface::class, PasswordEncoder::class);

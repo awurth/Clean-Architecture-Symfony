@@ -2,7 +2,7 @@
 
 namespace App\Infrastructure\Http\Form\DataMapper\User;
 
-use App\Domain\User\Message\Register;
+use App\Domain\User\Command\Register;
 use Symfony\Component\Form\DataMapperInterface;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
 use Symfony\Component\Form\FormInterface;
