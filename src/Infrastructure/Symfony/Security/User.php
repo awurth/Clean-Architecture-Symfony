@@ -5,7 +5,7 @@ namespace App\Infrastructure\Symfony\Security;
 use App\Domain\User\Entity\User as DomainUser;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class User implements UserInterface
+final class User implements UserInterface
 {
     private DomainUser $user;
 

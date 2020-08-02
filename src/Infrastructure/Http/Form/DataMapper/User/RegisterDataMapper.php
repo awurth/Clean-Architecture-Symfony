@@ -8,7 +8,7 @@ use Symfony\Component\Form\Exception\UnexpectedTypeException;
 use Symfony\Component\Form\FormInterface;
 use Traversable;
 
-class RegisterDataMapper implements DataMapperInterface
+final class RegisterDataMapper implements DataMapperInterface
 {
     /**
      * @param Register|null $viewData

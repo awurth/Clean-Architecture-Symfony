@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\String\UnicodeString;
 
-class EntityRepositoryCompilerPass implements CompilerPassInterface
+final class EntityRepositoryCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {

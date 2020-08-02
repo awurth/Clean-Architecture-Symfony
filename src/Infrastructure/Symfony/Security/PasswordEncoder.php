@@ -6,7 +6,7 @@ use App\Domain\User\Contract\PasswordEncoderInterface;
 use App\Domain\User\Entity\User as DomainUser;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class PasswordEncoder implements PasswordEncoderInterface
+final class PasswordEncoder implements PasswordEncoderInterface
 {
     private UserPasswordEncoderInterface $userPasswordEncoder;
 
