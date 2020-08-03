@@ -5,3 +5,4 @@
 - Abstract buses + stamps
 - Review infrastructure organization
 - Review namespaces
+- Tests

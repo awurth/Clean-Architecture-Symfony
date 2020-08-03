@@ -5,23 +5,27 @@
     <h1>Register</h1>
     <div class="mb-3">
       <label class="form-label" for="{{ form.email.vars.id }}">Email address</label>
-      <input id="{{ form.email.vars.id }}" class="form-control" type="email">
+      <input id="{{ form.email.vars.id }}" class="form-control" type="email" name="{{ form.email.vars.full_name }}" required>
+      {{ form_errors(form.email) }}
     </div>
     <div class="mb-3">
       <label class="form-label" for="{{ form.firstname.vars.id }}">First name</label>
-      <input id="{{ form.firstname.vars.id }}" class="form-control" type="email">
+      <input id="{{ form.firstname.vars.id }}" class="form-control" type="text" name="{{ form.firstname.vars.full_name }}" required>
+      {{ form_errors(form.firstname) }}
     </div>
     <div class="mb-3">
       <label class="form-label" for="{{ form.lastname.vars.id }}">Last name</label>
-      <input id="{{ form.lastname.vars.id }}" class="form-control" type="email">
+      <input id="{{ form.lastname.vars.id }}" class="form-control" type="text" name="{{ form.lastname.vars.full_name }}" required>
+      {{ form_errors(form.lastname) }}
     </div>
     <div class="mb-3">
       <label class="form-label" for="{{ form.plainPassword.first.vars.id }}">Password</label>
-      <input id="{{ form.plainPassword.first.vars.id }}" class="form-control" type="email">
+      <input id="{{ form.plainPassword.first.vars.id }}" class="form-control" type="password" name="{{ form.plainPassword.first.vars.full_name }}" required>
+      {{ form_errors(form.plainPassword.first) }}
     </div>
     <div class="mb-3">
       <label class="form-label" for="{{ form.plainPassword.second.vars.id }}">Confirm password</label>
-      <input id="{{ form.plainPassword.second.vars.id }}" class="form-control" type="email">
+      <input id="{{ form.plainPassword.second.vars.id }}" class="form-control" type="password" name="{{ form.plainPassword.second.vars.full_name }}" required>
     </div>
     {{ form_row(form._token) }}
     <button type="submit" class="btn btn-primary">Register</button>

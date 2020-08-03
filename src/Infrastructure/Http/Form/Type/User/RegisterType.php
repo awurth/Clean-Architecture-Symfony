@@ -29,6 +29,7 @@ final class RegisterType extends AbstractType
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'constraints' => [
+                    new NotBlank(),
                     new PasswordStrength(3)
                 ]
             ])
