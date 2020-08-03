@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="{{ app.request.locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+  {% endblock %}
+
+  <title>Clean Architecture</title>
+</head>
+<body>
+
+{% block body %}
+  {% block page_container %}
+    <div class="container">
+      {% block page_content %}{% endblock %}
+    </div>
+  {% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+  {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+</body>
+</html>

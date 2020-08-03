@@ -1,8 +1,29 @@
-{% extends 'base.html.twig' %}
+{% extends 'app/layout.html.twig' %}
 
-{% block body %}
-  {{ form_start(form) }}
-    {{ form_rest(form) }}
-    <button type="submit">Register</button>
-  {{ form_end(form) }}
+{% block page_content %}
+  <form action="{{ form.vars.action }}" method="{{ form.vars.method }}">
+    <h1>Register</h1>
+    <div class="mb-3">
+      <label class="form-label" for="{{ form.email.vars.id }}">Email address</label>
+      <input id="{{ form.email.vars.id }}" class="form-control" type="email">
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="{{ form.firstname.vars.id }}">First name</label>
+      <input id="{{ form.firstname.vars.id }}" class="form-control" type="email">
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="{{ form.lastname.vars.id }}">Last name</label>
+      <input id="{{ form.lastname.vars.id }}" class="form-control" type="email">
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="{{ form.plainPassword.first.vars.id }}">Password</label>
+      <input id="{{ form.plainPassword.first.vars.id }}" class="form-control" type="email">
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="{{ form.plainPassword.second.vars.id }}">Confirm password</label>
+      <input id="{{ form.plainPassword.second.vars.id }}" class="form-control" type="email">
+    </div>
+    {{ form_row(form._token) }}
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
 {% endblock %}
