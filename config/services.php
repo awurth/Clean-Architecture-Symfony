@@ -22,10 +22,14 @@ return static function (ContainerConfigurator $configurator) {
             '../../../src/Infrastructure/Symfony/Security/User.php'
         ]);
 
+    $services->load('App\\Presentation\\', '../../../src/Presentation/*');
+
+    $services->load('App\\Application\\UseCase\\', '../../../src/Application/UseCase');
+
     $services->load('App\\Infrastructure\\Persistence\\Doctrine\\Repository\\', '../../../src/Infrastructure/Persistence/Doctrine/Repository')
         ->tag('app.entity_repository');
 
-    $services->load('App\\Infrastructure\\Http\\Action\\', '../../../src/Infrastructure/Http/Action')
+    $services->load('App\\Infrastructure\\Symfony\\Action\\', '../../../src/Infrastructure/Symfony/Action')
         ->tag('controller.service_arguments');
 
     $services->load('App\\Application\\CommandHandler\\', '../../../src/Application/CommandHandler')

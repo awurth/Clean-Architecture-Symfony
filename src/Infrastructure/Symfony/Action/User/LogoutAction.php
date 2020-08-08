@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Http\Action\User;
+namespace App\Infrastructure\Symfony\Action\User;
 
 final class LogoutAction
 {

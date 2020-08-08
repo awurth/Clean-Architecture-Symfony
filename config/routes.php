@@ -1,7 +1,7 @@
 <?php
 
-use App\Infrastructure\Http\Action\User\LogoutAction;
-use App\Infrastructure\Http\Action\User\RegisterAction;
+use App\Infrastructure\Symfony\Action\User\LogoutAction;
+use App\Infrastructure\Symfony\Action\User\RegisterAction;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 return static function (RoutingConfigurator $routes) {
