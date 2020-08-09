@@ -2,14 +2,14 @@
 
 namespace App\Application\UseCase\User\Register;
 
+use App\Application\Contract\CommandBusInterface;
 use App\Domain\User\Command\Register;
-use Symfony\Component\Messenger\MessageBusInterface;
 
 final class RegisterUseCase
 {
-    private MessageBusInterface $commandBus;
+    private CommandBusInterface $commandBus;
 
-    public function __construct(MessageBusInterface $commandBus)
+    public function __construct(CommandBusInterface $commandBus)
     {
         $this->commandBus = $commandBus;
     }
@@ -19,7 +19,7 @@ final class RegisterUseCase
         $response = new RegisterResponse();
 
         if ($request) {
-            $this->commandBus->dispatch(new Register(
+            $this->commandBus->execute(new Register(
                 $request->email,
                 $request->plainPassword,
                 $request->firstname,

@@ -2,22 +2,21 @@
 
 namespace App\Application\CommandHandler\User;
 
+use App\Application\Contract\EventBusInterface;
 use App\Domain\User\Command\Register;
 use App\Domain\User\Contract\PasswordEncoderInterface;
 use App\Domain\User\Entity\User;
 use App\Domain\User\Event\Registered;
 use App\Domain\User\Repository\UserRepositoryInterface;
-use Symfony\Component\Messenger\MessageBusInterface;
-use Symfony\Component\Messenger\Stamp\DispatchAfterCurrentBusStamp;
 
 final class RegisterHandler
 {
-    private MessageBusInterface $eventBus;
+    private EventBusInterface $eventBus;
     private PasswordEncoderInterface $passwordEncoder;
     private UserRepositoryInterface $userRepository;
 
     public function __construct(
-        MessageBusInterface $eventBus,
+        EventBusInterface $eventBus,
         PasswordEncoderInterface $passwordEncoder,
         UserRepositoryInterface $userRepository
     )
@@ -33,8 +32,6 @@ final class RegisterHandler
 
         $this->userRepository->add($user);
 
-        $this->eventBus->dispatch(new Registered($user->id()), [
-            new DispatchAfterCurrentBusStamp()
-        ]);
+        $this->eventBus->dispatch(new Registered($user->id()));
     }
 }
