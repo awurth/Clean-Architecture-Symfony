@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Persistence\Doctrine\Exception;
+namespace App\Infrastructure\Persistence\Exception;
 
 final class UserNotFoundException extends EntityNotFoundException
 {

@@ -4,7 +4,7 @@ namespace App\Infrastructure\Persistence\Doctrine\Repository;
 
 use App\Domain\User\Repository\UserRepositoryInterface;
 use App\Domain\User\Entity\User;
-use App\Infrastructure\Persistence\Doctrine\Exception\UserNotFoundException;
+use App\Infrastructure\Persistence\Exception\UserNotFoundException;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
