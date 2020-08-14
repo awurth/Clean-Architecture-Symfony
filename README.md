@@ -6,4 +6,3 @@
 - Tests
 - Psalm/PHPStan
 - Validation
-- Form extension + translations
