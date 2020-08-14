@@ -20,17 +20,17 @@ class User
 
     private string $password;
 
-    private DateTimeInterface $createdAt;
+    private DateTimeInterface $registeredAt;
 
     private function __construct(Email $email, Name $name)
     {
         $this->id = Uuid::uuid4();
         $this->email = $email;
         $this->name = $name;
-        $this->createdAt = new DateTimeImmutable();
+        $this->registeredAt = new DateTimeImmutable();
     }
 
-    public static function createFromRegistrationMessage(Register $register, PasswordEncoderInterface $passwordEncoder): self
+    public static function register(Register $register, PasswordEncoderInterface $passwordEncoder): self
     {
         $user = new self(
             new Email($register->getEmail()),
@@ -62,8 +62,8 @@ class User
         return $this->password;
     }
 
-    public function createdAt(): DateTimeInterface
+    public function registeredAt(): DateTimeInterface
     {
-        return $this->createdAt;
+        return $this->registeredAt;
     }
 }

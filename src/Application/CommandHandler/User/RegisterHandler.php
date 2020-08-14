@@ -28,7 +28,7 @@ final class RegisterHandler
 
     public function __invoke(Register $register): void
     {
-        $user = User::createFromRegistrationMessage($register, $this->passwordEncoder);
+        $user = User::register($register, $this->passwordEncoder);
 
         $this->userRepository->add($user);
 
