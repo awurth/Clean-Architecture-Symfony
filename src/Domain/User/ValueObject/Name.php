@@ -4,7 +4,7 @@ namespace App\Domain\User\ValueObject;
 
 use Assert\Assert;
 
-class Name
+final class Name
 {
     private string $firstname;
 

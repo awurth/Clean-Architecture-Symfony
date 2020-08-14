@@ -4,7 +4,7 @@ namespace App\Domain\User\ValueObject;
 
 use Assert\Assert;
 
-class Email
+final class Email
 {
     private string $email;
 
