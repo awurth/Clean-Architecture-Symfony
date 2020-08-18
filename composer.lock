@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "be19d88facbde7eef057566d95eb304f",
+    "content-hash": "daa9e34c8ecb3e1f89cf68484687b86a",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1393,16 +1393,16 @@
         },
         {
             "name": "ocramius/package-versions",
-            "version": "1.10.0",
+            "version": "1.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ocramius/PackageVersions.git",
-                "reference": "80f88b35ff45a0fdccf852d4788bb79bb67c3817"
+                "reference": "e19f578f124541b9eb89bd09d53983a7da93e0d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/80f88b35ff45a0fdccf852d4788bb79bb67c3817",
-                "reference": "80f88b35ff45a0fdccf852d4788bb79bb67c3817",
+                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/e19f578f124541b9eb89bd09d53983a7da93e0d7",
+                "reference": "e19f578f124541b9eb89bd09d53983a7da93e0d7",
                 "shasum": ""
             },
             "require": {
@@ -1443,7 +1443,7 @@
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
             "support": {
                 "issues": "https://github.com/Ocramius/PackageVersions/issues",
-                "source": "https://github.com/Ocramius/PackageVersions/tree/1.10.0"
+                "source": "https://github.com/Ocramius/PackageVersions/tree/1.10.2"
             },
             "funding": [
                 {
@@ -1455,7 +1455,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-11T19:45:58+00:00"
+            "time": "2020-08-18T10:30:56+00:00"
         },
         {
             "name": "psr/cache",
@@ -6556,7 +6556,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4",
+        "php": ">=7.4",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
