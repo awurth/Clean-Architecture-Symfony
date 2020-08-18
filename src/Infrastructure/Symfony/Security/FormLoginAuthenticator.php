@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
@@ -53,13 +52,7 @@ final class FormLoginAuthenticator extends AbstractFormLoginAuthenticator implem
 
     public function getUser($credentials, UserProviderInterface $userProvider): UserInterface
     {
-        $user = $userProvider->loadUserByUsername($credentials['email']);
-
-        if (!$user) {
-            throw new CustomUserMessageAuthenticationException('User could not be found.');
-        }
-
-        return $user;
+        return $userProvider->loadUserByUsername($credentials['email']);
     }
 
     public function checkCredentials($credentials, UserInterface $user): bool
