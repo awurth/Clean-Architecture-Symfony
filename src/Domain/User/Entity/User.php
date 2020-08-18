@@ -2,9 +2,11 @@
 
 namespace App\Domain\User\Entity;
 
+use App\Domain\RaisesEvents;
 use App\Domain\Time;
 use App\Domain\User\Command\Register;
 use App\Domain\User\Contract\PasswordEncoderInterface;
+use App\Domain\User\Event\Registered;
 use App\Domain\User\ValueObject\Email;
 use App\Domain\User\ValueObject\Name;
 use App\Domain\User\ValueObject\UserId;
@@ -12,6 +14,8 @@ use DateTimeInterface;
 
 class User
 {
+    use RaisesEvents;
+
     private UserId $id;
     private Email $email;
     private Name $name;
@@ -24,6 +28,8 @@ class User
         $this->email = $email;
         $this->name = $name;
         $this->registeredAt = Time::now();
+
+        $this->raise(new Registered($this->id));
     }
 
     public static function register(Register $register, PasswordEncoderInterface $passwordEncoder): self

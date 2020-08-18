@@ -21,4 +21,11 @@ final class EventBus implements EventBusInterface
             new DispatchAfterCurrentBusStamp()
         ]);
     }
+
+    public function dispatchAll(array $events): void
+    {
+        foreach ($events as $event) {
+            $this->dispatch($event);
+        }
+    }
 }

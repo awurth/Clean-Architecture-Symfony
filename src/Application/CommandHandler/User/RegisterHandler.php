@@ -6,7 +6,6 @@ use App\Application\Contract\EventBusInterface;
 use App\Domain\User\Command\Register;
 use App\Domain\User\Contract\PasswordEncoderInterface;
 use App\Domain\User\Entity\User;
-use App\Domain\User\Event\Registered;
 use App\Domain\User\Repository\UserRepositoryInterface;
 
 final class RegisterHandler
@@ -32,6 +31,6 @@ final class RegisterHandler
 
         $this->userRepository->add($user);
 
-        $this->eventBus->dispatch(new Registered($user->id()));
+        $this->eventBus->dispatchAll($user->popEvents());
     }
 }
