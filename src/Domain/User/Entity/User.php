@@ -27,7 +27,7 @@ class User
         $this->id = Uuid::uuid4();
         $this->email = $email;
         $this->name = $name;
-        $this->registeredAt = Time::nowImmutable();
+        $this->registeredAt = Time::now();
     }
 
     public static function register(Register $register, PasswordEncoderInterface $passwordEncoder): self

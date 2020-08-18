@@ -8,7 +8,7 @@
     <embedded name="email" class="App\Domain\User\ValueObject\Email" use-column-prefix="false" />
     <embedded name="name" class="App\Domain\User\ValueObject\Name" use-column-prefix="false" />
     <field name="password" column="password" />
-    <field name="createdAt" column="created_at" type="datetime" />
+    <field name="registeredAt" column="registered_at" type="datetime" />
   </entity>
 
 </doctrine-mapping>
