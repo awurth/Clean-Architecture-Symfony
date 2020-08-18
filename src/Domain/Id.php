@@ -8,7 +8,7 @@ abstract class Id
 {
     private string $id;
 
-    private function __construct(string $id)
+    final private function __construct(string $id)
     {
         Assertion::uuid($id);
         $this->id = $id;
