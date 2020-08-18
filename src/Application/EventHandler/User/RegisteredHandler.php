@@ -15,6 +15,6 @@ final class RegisteredHandler
 
     public function __invoke(Registered $registered): void
     {
-        $this->sendRegistrationConfirmationNotification->to($registered->getUserId());
+        $this->sendRegistrationConfirmationNotification->to($registered->userId());
     }
 }

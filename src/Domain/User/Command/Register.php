@@ -17,22 +17,22 @@ final class Register
         $this->lastname = $lastname;
     }
 
-    public function getEmail(): string
+    public function email(): string
     {
         return $this->email;
     }
 
-    public function getPlainPassword(): string
+    public function plainPassword(): string
     {
         return $this->plainPassword;
     }
 
-    public function getFirstname(): string
+    public function firstname(): string
     {
         return $this->firstname;
     }
 
-    public function getLastname(): string
+    public function lastname(): string
     {
         return $this->lastname;
     }

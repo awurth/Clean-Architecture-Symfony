@@ -7,7 +7,6 @@ use Assert\Assert;
 final class Name
 {
     private string $firstname;
-
     private string $lastname;
 
     public function __construct(string $firstname, string $lastname)

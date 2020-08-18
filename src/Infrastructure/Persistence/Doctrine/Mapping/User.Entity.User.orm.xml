@@ -4,11 +4,17 @@
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
   <entity name="App\Domain\User\Entity\User" table="users">
-    <id name="id" column="id" type="guid" />
+
+    <id name="id" column="id" type="user_id" />
+
     <embedded name="email" class="App\Domain\User\ValueObject\Email" use-column-prefix="false" />
+
     <embedded name="name" class="App\Domain\User\ValueObject\Name" use-column-prefix="false" />
+
     <field name="password" column="password" />
+
     <field name="registeredAt" column="registered_at" type="datetime" />
+
   </entity>
 
 </doctrine-mapping>

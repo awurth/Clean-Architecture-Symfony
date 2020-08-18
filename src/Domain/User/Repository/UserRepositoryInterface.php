@@ -3,10 +3,11 @@
 namespace App\Domain\User\Repository;
 
 use App\Domain\User\Entity\User;
+use App\Domain\User\ValueObject\UserId;
 
 interface UserRepositoryInterface
 {
     public function add(User $user): void;
 
-    public function get(string $id): User;
+    public function get(UserId $id): User;
 }

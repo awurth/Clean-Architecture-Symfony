@@ -7,24 +7,20 @@ use App\Domain\User\Command\Register;
 use App\Domain\User\Contract\PasswordEncoderInterface;
 use App\Domain\User\ValueObject\Email;
 use App\Domain\User\ValueObject\Name;
-use App\Domain\Uuid;
+use App\Domain\User\ValueObject\UserId;
 use DateTimeInterface;
 
 class User
 {
-    private string $id;
-
+    private UserId $id;
     private Email $email;
-
     private Name $name;
-
     private string $password;
-
     private DateTimeInterface $registeredAt;
 
     private function __construct(Email $email, Name $name)
     {
-        $this->id = Uuid::uuid4();
+        $this->id = UserId::generate();
         $this->email = $email;
         $this->name = $name;
         $this->registeredAt = Time::now();
@@ -33,16 +29,16 @@ class User
     public static function register(Register $register, PasswordEncoderInterface $passwordEncoder): self
     {
         $user = new self(
-            new Email($register->getEmail()),
-            new Name($register->getFirstname(), $register->getLastname())
+            new Email($register->email()),
+            new Name($register->firstname(), $register->lastname())
         );
 
-        $user->password = $passwordEncoder->encodePassword($user, $register->getPlainPassword());
+        $user->password = $passwordEncoder->encodePassword($user, $register->plainPassword());
 
         return $user;
     }
 
-    public function id(): string
+    public function id(): UserId
     {
         return $this->id;
     }

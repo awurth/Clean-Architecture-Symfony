@@ -4,6 +4,7 @@ namespace App\Infrastructure\Notification\User;
 
 use App\Application\EventHandler\User\SendRegistrationConfirmationNotificationInterface;
 use App\Domain\User\Repository\UserRepositoryInterface;
+use App\Domain\User\ValueObject\UserId;
 use App\Infrastructure\Symfony\Mailer\MailerInterface;
 
 final class SendRegistrationConfirmationEmail implements SendRegistrationConfirmationNotificationInterface
@@ -17,7 +18,7 @@ final class SendRegistrationConfirmationEmail implements SendRegistrationConfirm
         $this->userRepository = $userRepository;
     }
 
-    public function to(string $userId): void
+    public function to(UserId $userId): void
     {
         $user = $this->userRepository->get($userId);
 
