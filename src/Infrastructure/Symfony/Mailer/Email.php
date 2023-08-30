@@ -6,7 +6,7 @@ namespace App\Infrastructure\Symfony\Mailer;
 
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
-final class Email implements EmailInterface
+final readonly class Email implements EmailInterface
 {
     private TemplatedEmail $email;
 

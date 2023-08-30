@@ -7,20 +7,17 @@ namespace App\Application\UseCase\User\Register;
 use App\Application\Contract\CommandBusInterface;
 use App\Domain\User\Command\Register;
 
-final class RegisterUseCase
+final readonly class RegisterUseCase
 {
-    private CommandBusInterface $commandBus;
-
-    public function __construct(CommandBusInterface $commandBus)
+    public function __construct(private CommandBusInterface $commandBus)
     {
-        $this->commandBus = $commandBus;
     }
 
     public function execute(?RegisterRequest $request): RegisterResponse
     {
         $response = new RegisterResponse();
 
-        if ($request) {
+        if ($request instanceof \App\Application\UseCase\User\Register\RegisterRequest) {
             $this->commandBus->execute(new Register(
                 $request->email,
                 $request->plainPassword,

@@ -6,9 +6,9 @@ namespace App\Domain\User\ValueObject;
 
 use Assert\Assert;
 
-final class Email
+final class Email implements \Stringable
 {
-    private string $email;
+    private readonly string $email;
 
     public function __construct(string $email)
     {

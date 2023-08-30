@@ -9,13 +9,10 @@ use Symfony\Component\Form\FormInterface;
 
 final class FormRegistry
 {
-    private FormFactoryInterface $formFactory;
-
     private array $forms = [];
 
-    public function __construct(FormFactoryInterface $formFactory)
+    public function __construct(private readonly FormFactoryInterface $formFactory)
     {
-        $this->formFactory = $formFactory;
     }
 
     public function createForm(string $type, $data = null, array $options = []): FormInterface

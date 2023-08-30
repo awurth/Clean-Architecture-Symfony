@@ -17,17 +17,13 @@ class User
 {
     use RaisesEvents;
 
-    private UserId $id;
-    private Email $email;
-    private Name $name;
+    private readonly UserId $id;
     private string $password;
-    private \DateTimeInterface $registeredAt;
+    private readonly \DateTimeInterface $registeredAt;
 
-    private function __construct(Email $email, Name $name)
+    private function __construct(private readonly Email $email, private readonly Name $name)
     {
         $this->id = UserId::generate();
-        $this->email = $email;
-        $this->name = $name;
         $this->registeredAt = Time::now();
 
         $this->raise(new Registered($this->id));

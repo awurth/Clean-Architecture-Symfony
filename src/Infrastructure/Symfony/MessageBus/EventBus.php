@@ -8,13 +8,10 @@ use App\Application\Contract\EventBusInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\DispatchAfterCurrentBusStamp;
 
-final class EventBus implements EventBusInterface
+final readonly class EventBus implements EventBusInterface
 {
-    private MessageBusInterface $eventBus;
-
-    public function __construct(MessageBusInterface $eventBus)
+    public function __construct(private MessageBusInterface $eventBus)
     {
-        $this->eventBus = $eventBus;
     }
 
     public function dispatch(object $event): void

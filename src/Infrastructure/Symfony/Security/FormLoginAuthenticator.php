@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
@@ -22,13 +21,8 @@ final class FormLoginAuthenticator extends AbstractFormLoginAuthenticator implem
 
     public const LOGIN_ROUTE = 'app_login';
 
-    private UrlGeneratorInterface $urlGenerator;
-    private UserPasswordEncoderInterface $passwordEncoder;
-
-    public function __construct(UrlGeneratorInterface $urlGenerator, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(private readonly UrlGeneratorInterface $urlGenerator, private readonly \Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface $passwordEncoder)
     {
-        $this->urlGenerator = $urlGenerator;
-        $this->passwordEncoder = $passwordEncoder;
     }
 
     public function supports(Request $request): bool

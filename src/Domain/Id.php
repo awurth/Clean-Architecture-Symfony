@@ -6,9 +6,9 @@ namespace App\Domain;
 
 use Assert\Assertion;
 
-abstract class Id
+abstract class Id implements \Stringable
 {
-    private string $id;
+    private readonly string $id;
 
     final private function __construct(string $id)
     {

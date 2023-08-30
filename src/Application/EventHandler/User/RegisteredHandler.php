@@ -6,13 +6,10 @@ namespace App\Application\EventHandler\User;
 
 use App\Domain\User\Event\Registered;
 
-final class RegisteredHandler
+final readonly class RegisteredHandler
 {
-    private SendRegistrationConfirmationNotificationInterface $sendRegistrationConfirmationNotification;
-
-    public function __construct(SendRegistrationConfirmationNotificationInterface $sendRegistrationConfirmationNotification)
+    public function __construct(private SendRegistrationConfirmationNotificationInterface $sendRegistrationConfirmationNotification)
     {
-        $this->sendRegistrationConfirmationNotification = $sendRegistrationConfirmationNotification;
     }
 
     public function __invoke(Registered $registered): void

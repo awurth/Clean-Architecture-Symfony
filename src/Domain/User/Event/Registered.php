@@ -6,13 +6,10 @@ namespace App\Domain\User\Event;
 
 use App\Domain\User\ValueObject\UserId;
 
-final class Registered
+final readonly class Registered
 {
-    private UserId $userId;
-
-    public function __construct(UserId $userId)
+    public function __construct(private UserId $userId)
     {
-        $this->userId = $userId;
     }
 
     public function userId(): UserId

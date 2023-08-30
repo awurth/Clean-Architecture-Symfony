@@ -8,13 +8,10 @@ use App\Application\Contract\QueryBusInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
 
-final class QueryBus implements QueryBusInterface
+final readonly class QueryBus implements QueryBusInterface
 {
-    private MessageBusInterface $queryBus;
-
-    public function __construct(MessageBusInterface $queryBus)
+    public function __construct(private MessageBusInterface $queryBus)
     {
-        $this->queryBus = $queryBus;
     }
 
     public function query(object $query)

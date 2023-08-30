@@ -14,23 +14,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/register', name: 'app_register', methods: ['GET', 'POST'])]
-final class RegisterAction
+final readonly class RegisterAction
 {
-    private FormRegistry $formRegistry;
-    private RegisterWebPresenter $registerPresenter;
-    private RegisterUseCase $registerUseCase;
-    private RegisterView $registerView;
-
-    public function __construct(
-        FormRegistry $formRegistry,
-        RegisterWebPresenter $registerPresenter,
-        RegisterUseCase $registerUseCase,
-        RegisterView $registerView,
-    ) {
-        $this->formRegistry = $formRegistry;
-        $this->registerPresenter = $registerPresenter;
-        $this->registerUseCase = $registerUseCase;
-        $this->registerView = $registerView;
+    public function __construct(private FormRegistry $formRegistry, private RegisterWebPresenter $registerPresenter, private RegisterUseCase $registerUseCase, private RegisterView $registerView)
+    {
     }
 
     public function __invoke(Request $request): Response

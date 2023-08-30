@@ -8,13 +8,10 @@ use App\Domain\User\Entity\User as DomainUser;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-final class User implements UserInterface, PasswordAuthenticatedUserInterface
+final readonly class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    private DomainUser $user;
-
-    public function __construct(DomainUser $user)
+    public function __construct(private DomainUser $user)
     {
-        $this->user = $user;
     }
 
     public function getRoles(): array

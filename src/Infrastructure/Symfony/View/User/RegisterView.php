@@ -11,15 +11,10 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-final class RegisterView
+final readonly class RegisterView
 {
-    private Environment $twig;
-    private FormRegistry $formRegistry;
-
-    public function __construct(Environment $twig, FormRegistry $formRegistry)
+    public function __construct(private Environment $twig, private FormRegistry $formRegistry)
     {
-        $this->twig = $twig;
-        $this->formRegistry = $formRegistry;
     }
 
     public function generate(RegisterWebViewModel $viewModel): Response

@@ -10,20 +10,10 @@ use App\Domain\User\Contract\PasswordEncoderInterface;
 use App\Domain\User\Entity\User;
 use App\Domain\User\Repository\UserRepositoryInterface;
 
-final class RegisterHandler
+final readonly class RegisterHandler
 {
-    private EventBusInterface $eventBus;
-    private PasswordEncoderInterface $passwordEncoder;
-    private UserRepositoryInterface $userRepository;
-
-    public function __construct(
-        EventBusInterface $eventBus,
-        PasswordEncoderInterface $passwordEncoder,
-        UserRepositoryInterface $userRepository,
-    ) {
-        $this->eventBus = $eventBus;
-        $this->passwordEncoder = $passwordEncoder;
-        $this->userRepository = $userRepository;
+    public function __construct(private EventBusInterface $eventBus, private PasswordEncoderInterface $passwordEncoder, private UserRepositoryInterface $userRepository)
+    {
     }
 
     public function __invoke(Register $register): void

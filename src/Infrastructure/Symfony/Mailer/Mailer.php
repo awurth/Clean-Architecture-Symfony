@@ -7,13 +7,10 @@ namespace App\Infrastructure\Symfony\Mailer;
 use Symfony\Component\Mailer\MailerInterface as SymfonyMailerInterface;
 use Symfony\Component\Mime\RawMessage;
 
-final class Mailer implements MailerInterface
+final readonly class Mailer implements MailerInterface
 {
-    private SymfonyMailerInterface $mailer;
-
-    public function __construct(SymfonyMailerInterface $mailer)
+    public function __construct(private SymfonyMailerInterface $mailer)
     {
-        $this->mailer = $mailer;
     }
 
     public function createMail(): EmailInterface

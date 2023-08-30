@@ -9,15 +9,10 @@ use App\Domain\User\Repository\UserRepositoryInterface;
 use App\Domain\User\ValueObject\UserId;
 use App\Infrastructure\Symfony\Mailer\MailerInterface;
 
-final class SendRegistrationConfirmationEmail implements SendRegistrationConfirmationNotificationInterface
+final readonly class SendRegistrationConfirmationEmail implements SendRegistrationConfirmationNotificationInterface
 {
-    private MailerInterface $mailer;
-    private UserRepositoryInterface $userRepository;
-
-    public function __construct(MailerInterface $mailer, UserRepositoryInterface $userRepository)
+    public function __construct(private MailerInterface $mailer, private UserRepositoryInterface $userRepository)
     {
-        $this->mailer = $mailer;
-        $this->userRepository = $userRepository;
     }
 
     public function to(UserId $userId): void

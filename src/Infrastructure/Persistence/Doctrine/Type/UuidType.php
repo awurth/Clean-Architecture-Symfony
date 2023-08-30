@@ -36,7 +36,7 @@ abstract class UuidType extends GuidType
 
         try {
             return ($this->getClass())::fromString($value);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             throw ConversionException::conversionFailed($value, $this->getName());
         }
     }
