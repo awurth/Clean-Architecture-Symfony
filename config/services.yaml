@@ -1,0 +1,59 @@
+parameters:
+    app.mailer.default_sender: '%env(MAILER_DEFAULT_SENDER)%'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\Application\:
+        resource: '../src/Application/'
+
+    App\Infrastructure\Notification\:
+        resource: '../src/Infrastructure/Notification/'
+
+    App\Infrastructure\Symfony\:
+        resource: '../src/Infrastructure/Symfony/'
+        exclude:
+            - '../src/Infrastructure/Symfony/DependencyInjection/'
+            - '../src/Infrastructure/Symfony/Kernel.php'
+            - '../src/Infrastructure/Symfony/Security/User.php'
+
+    App\Infrastructure\Symfony\Action\:
+        resource: '../src/Infrastructure/Symfony/Action/'
+        tags:
+            - { name: 'controller.service_arguments' }
+
+    App\Presentation\:
+        resource: '../src/Presentation/'
+
+    App\Application\UseCase\:
+        resource: '../src/Application/UseCase/'
+
+    App\Infrastructure\Persistence\Doctrine\Repository\:
+        resource: '../src/Infrastructure/Persistence/Doctrine/Repository/'
+        tags:
+            - { name: 'app.entity_repository' }
+
+    App\Application\CommandHandler\:
+        resource: '../src/Application/CommandHandler/'
+        tags:
+            - { name: 'messenger.message_handler', bus: 'command.bus' }
+
+    App\Application\QueryHandler\:
+        resource: '../src/Application/QueryHandler/'
+        tags:
+            - { name: 'messenger.message_handler', bus: 'query.bus' }
+
+    App\Application\EventHandler\:
+        resource: '../src/Application/EventHandler/'
+        tags:
+            - { name: 'messenger.message_handler', bus: 'event.bus' }
+
+    App\Application\Contract\CommandBusInterface: '@App\Infrastructure\Symfony\MessageBus\CommandBus'
+    App\Application\Contract\EventBusInterface: '@App\Infrastructure\Symfony\MessageBus\EventBus'
+    App\Application\Contract\QueryBusInterface: '@App\Infrastructure\Symfony\MessageBus\QueryBus'
+
+    App\Domain\User\Contract\PasswordEncoderInterface: '@App\Infrastructure\Symfony\Security\PasswordEncoder'
+
+    App\Application\EventHandler\User\SendRegistrationConfirmationNotificationInterface: '@App\Infrastructure\Notification\User\SendRegistrationConfirmationEmail'
