@@ -9,7 +9,9 @@ use App\Infrastructure\Symfony\View\User\RegisterView;
 use App\Presentation\Web\User\Register\RegisterWebPresenter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/register', name: 'app_register', methods: ['GET', 'POST'])]
 final class RegisterAction
 {
     private FormRegistry $formRegistry;

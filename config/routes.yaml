@@ -1,0 +1,3 @@
+actions:
+    resource: ../src/Infrastructure/Symfony/Action/
+    type: annotation
