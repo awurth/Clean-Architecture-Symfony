@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Domain;
+declare(strict_types=1);
 
-use DateTimeImmutable;
-use DateTimeInterface;
+namespace App\Domain;
 
 final class Time
 {
-    public static function now(): DateTimeInterface
+    public static function now(): \DateTimeInterface
     {
-        return new DateTimeImmutable();
+        return new \DateTimeImmutable();
     }
 }

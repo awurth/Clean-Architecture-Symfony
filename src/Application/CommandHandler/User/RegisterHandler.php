@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Application\CommandHandler\User;
 
 use App\Application\Contract\EventBusInterface;
@@ -17,9 +19,8 @@ final class RegisterHandler
     public function __construct(
         EventBusInterface $eventBus,
         PasswordEncoderInterface $passwordEncoder,
-        UserRepositoryInterface $userRepository
-    )
-    {
+        UserRepositoryInterface $userRepository,
+    ) {
         $this->eventBus = $eventBus;
         $this->passwordEncoder = $passwordEncoder;
         $this->userRepository = $userRepository;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Symfony\Action\User;
 
 use Symfony\Component\Routing\Annotation\Route;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Presentation\Web\User\Register;
 
 use App\Application\UseCase\User\Register\RegisterPresenterInterface;

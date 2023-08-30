@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domain;
 
 use Assert\Assertion;
@@ -29,7 +31,7 @@ abstract class Id
         return new static(uuid_create(UUID_TYPE_RANDOM));
     }
 
-    public function equals(Id $id): bool
+    public function equals(self $id): bool
     {
         return $id->toString() === $this->id;
     }

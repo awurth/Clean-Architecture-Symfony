@@ -1,9 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Persistence\Exception;
 
-use Exception;
-
-abstract class EntityNotFoundException extends Exception
+abstract class EntityNotFoundException extends \Exception
 {
 }

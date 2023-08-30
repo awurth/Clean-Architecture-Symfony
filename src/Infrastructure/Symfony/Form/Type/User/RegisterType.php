@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Symfony\Form\Type\User;
 
 use App\Application\UseCase\User\Register\RegisterRequest;
@@ -16,24 +18,24 @@ final class RegisterType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'required' => true
+                'required' => true,
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'required' => true
+                'required' => true,
             ])
             ->add('firstname', null, [
-                'required' => true
+                'required' => true,
             ])
             ->add('lastname', null, [
-                'required' => true
+                'required' => true,
             ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => RegisterRequest::class
+            'data_class' => RegisterRequest::class,
         ]);
     }
 }

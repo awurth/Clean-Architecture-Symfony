@@ -2,6 +2,18 @@
     "beberlei/assert": {
         "version": "v3.2.7"
     },
+    "doctrine/annotations": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "a2759dd6123694c8d901d0ec80006e044c2e6457"
+        },
+        "files": [
+            "config/routes/annotations.yaml"
+        ]
+    },
     "doctrine/cache": {
         "version": "1.10.2"
     },
@@ -67,6 +79,18 @@
     },
     "egulias/email-validator": {
         "version": "2.1.18"
+    },
+    "friendsofphp/php-cs-fixer": {
+        "version": "3.24",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "be2103eb4a20942e28a6dd87736669b757132435"
+        },
+        "files": [
+            ".php-cs-fixer.dist.php"
+        ]
     },
     "nikic/php-parser": {
         "version": "v4.7.0"

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Symfony\MessageBus;
 
 use App\Application\Contract\EventBusInterface;
@@ -18,7 +20,7 @@ final class EventBus implements EventBusInterface
     public function dispatch(object $event): void
     {
         $this->eventBus->dispatch($event, [
-            new DispatchAfterCurrentBusStamp()
+            new DispatchAfterCurrentBusStamp(),
         ]);
     }
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Symfony\Action\User;
 
 use App\Application\UseCase\User\Register\RegisterUseCase;
@@ -23,9 +25,8 @@ final class RegisterAction
         FormRegistry $formRegistry,
         RegisterWebPresenter $registerPresenter,
         RegisterUseCase $registerUseCase,
-        RegisterView $registerView
-    )
-    {
+        RegisterView $registerView,
+    ) {
         $this->formRegistry = $formRegistry;
         $this->registerPresenter = $registerPresenter;
         $this->registerUseCase = $registerUseCase;

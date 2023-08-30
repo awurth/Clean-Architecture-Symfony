@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domain\User\ValueObject;
 
 use Assert\Assert;
@@ -14,13 +16,13 @@ final class Email
         $this->email = $email;
     }
 
-    public function toString(): string
-    {
-        return $this->email;
-    }
-
     public function __toString(): string
     {
         return $this->toString();
+    }
+
+    public function toString(): string
+    {
+        return $this->email;
     }
 }

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Symfony\Mailer;
 
-use LogicException;
 use Symfony\Component\Mailer\MailerInterface as SymfonyMailerInterface;
 use Symfony\Component\Mime\RawMessage;
 
@@ -25,7 +26,7 @@ final class Mailer implements MailerInterface
         $symfonyEmail = $email->getEmail();
 
         if (!$symfonyEmail instanceof RawMessage) {
-            throw new LogicException(sprintf('Mailer expects an instance of "%s", "%s" given', RawMessage::class, get_class($symfonyEmail)));
+            throw new \LogicException(\sprintf('Mailer expects an instance of "%s", "%s" given', RawMessage::class, $symfonyEmail::class));
         }
 
         $this->mailer->send($symfonyEmail);

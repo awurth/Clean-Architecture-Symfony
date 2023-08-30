@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Notification\User;
 
 use App\Application\EventHandler\User\SendRegistrationConfirmationNotificationInterface;
@@ -27,8 +29,8 @@ final class SendRegistrationConfirmationEmail implements SendRegistrationConfirm
                 ->to($user->email()->toString())
                 ->htmlTemplate('app/emails/user/confirm_registration.html.twig')
                 ->context([
-                    'user' => $user
-                ])
+                    'user' => $user,
+                ]),
         );
     }
 }

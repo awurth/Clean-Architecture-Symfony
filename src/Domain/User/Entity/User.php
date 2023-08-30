@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domain\User\Entity;
 
 use App\Domain\RaisesEvents;
@@ -10,7 +12,6 @@ use App\Domain\User\Event\Registered;
 use App\Domain\User\ValueObject\Email;
 use App\Domain\User\ValueObject\Name;
 use App\Domain\User\ValueObject\UserId;
-use DateTimeInterface;
 
 class User
 {
@@ -20,7 +21,7 @@ class User
     private Email $email;
     private Name $name;
     private string $password;
-    private DateTimeInterface $registeredAt;
+    private \DateTimeInterface $registeredAt;
 
     private function __construct(Email $email, Name $name)
     {
@@ -36,7 +37,7 @@ class User
     {
         $user = new self(
             new Email($register->email()),
-            new Name($register->firstname(), $register->lastname())
+            new Name($register->firstname(), $register->lastname()),
         );
 
         $user->password = $passwordEncoder->encodePassword($user, $register->plainPassword());
@@ -64,7 +65,7 @@ class User
         return $this->password;
     }
 
-    public function registeredAt(): DateTimeInterface
+    public function registeredAt(): \DateTimeInterface
     {
         return $this->registeredAt;
     }

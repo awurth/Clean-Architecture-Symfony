@@ -27,6 +27,7 @@
         "twig/twig": "^3.7"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.24",
         "symfony/maker-bundle": "^1.50",
         "symfony/stopwatch": "5.4.*",
         "symfony/web-profiler-bundle": "5.4.*"

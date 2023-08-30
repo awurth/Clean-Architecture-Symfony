@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Symfony\Security;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -40,11 +42,11 @@ final class FormLoginAuthenticator extends AbstractFormLoginAuthenticator implem
         $credentials = [
             'email' => $request->request->get('email'),
             'password' => $request->request->get('password'),
-            'csrf_token' => $request->request->get('_csrf_token')
+            'csrf_token' => $request->request->get('_csrf_token'),
         ];
         $request->getSession()->set(
             Security::LAST_USERNAME,
-            $credentials['email']
+            $credentials['email'],
         );
 
         return $credentials;

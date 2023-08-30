@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Symfony\View\User;
 
 use App\Infrastructure\Symfony\Form\FormRegistry;
@@ -30,7 +32,7 @@ final class RegisterView
 
         return new Response($this->twig->render('app/actions/user/register.html.twig', [
             'form' => $form->createView(),
-            'view' => $viewModel
+            'view' => $viewModel,
         ]));
     }
 }

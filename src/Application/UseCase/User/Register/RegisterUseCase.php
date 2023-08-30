@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Application\UseCase\User\Register;
 
 use App\Application\Contract\CommandBusInterface;
@@ -23,7 +25,7 @@ final class RegisterUseCase
                 $request->email,
                 $request->plainPassword,
                 $request->firstname,
-                $request->lastname
+                $request->lastname,
             ));
 
             $response->registered = true;

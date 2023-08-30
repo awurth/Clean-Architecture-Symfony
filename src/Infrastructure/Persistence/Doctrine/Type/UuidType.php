@@ -1,18 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Persistence\Doctrine\Type;
 
 use App\Domain\Id;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\GuidType;
-use Exception;
 
 abstract class UuidType extends GuidType
 {
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
-        if ($value === null || $value === '') {
+        if (null === $value || '' === $value) {
             return null;
         }
 
@@ -25,7 +26,7 @@ abstract class UuidType extends GuidType
 
     public function convertToPHPValue($value, AbstractPlatform $platform): ?Id
     {
-        if ($value === null || $value === '') {
+        if (null === $value || '' === $value) {
             return null;
         }
 
@@ -35,7 +36,7 @@ abstract class UuidType extends GuidType
 
         try {
             return ($this->getClass())::fromString($value);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             throw ConversionException::conversionFailed($value, $this->getName());
         }
     }
