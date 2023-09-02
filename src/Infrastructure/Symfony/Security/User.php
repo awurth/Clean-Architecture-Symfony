@@ -29,9 +29,9 @@ final readonly class User implements UserInterface, PasswordAuthenticatedUserInt
         return null;
     }
 
-    public function getUsername(): string
+    public function getUserIdentifier(): string
     {
-        return $this->user->email();
+        return (string)$this->user->email();
     }
 
     public function eraseCredentials(): void

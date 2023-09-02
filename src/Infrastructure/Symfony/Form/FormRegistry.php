@@ -15,7 +15,7 @@ final class FormRegistry
     {
     }
 
-    public function createForm(string $type, $data = null, array $options = []): FormInterface
+    public function createForm(string $type, mixed $data = null, array $options = []): FormInterface
     {
         $this->forms[$type] = $this->formFactory->create($type, $data, $options);
 

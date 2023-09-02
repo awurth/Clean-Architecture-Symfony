@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/register', name: 'app_register', methods: ['GET', 'POST'])]
+#[Route(path: '/register', name: 'app_register', methods: ['GET', 'POST'])]
 final readonly class RegisterAction
 {
     public function __construct(private FormRegistry $formRegistry, private RegisterWebPresenter $registerPresenter, private RegisterUseCase $registerUseCase, private RegisterView $registerView)

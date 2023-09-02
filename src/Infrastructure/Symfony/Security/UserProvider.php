@@ -16,10 +16,10 @@ final readonly class UserProvider implements UserProviderInterface
     {
     }
 
-    public function loadUserByUsername(string $username): UserInterface
+    public function loadUserByIdentifier(string $identifier): UserInterface
     {
         /** @var DomainUser|null $user */
-        $user = $this->userRepository->findOneBy(['email' => $username]);
+        $user = $this->userRepository->findOneBy(['email' => $identifier]);
 
         if (!$user instanceof DomainUser) {
             throw new UserNotFoundException();
@@ -30,7 +30,7 @@ final readonly class UserProvider implements UserProviderInterface
 
     public function refreshUser(UserInterface $user): UserInterface
     {
-        return $this->loadUserByUsername($user->getUsername());
+        return $this->loadUserByIdentifier($user->getUserIdentifier());
     }
 
     public function supportsClass(string $class): bool
