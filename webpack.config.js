@@ -50,4 +50,8 @@ Encore
     //.enableIntegrityHashes(Encore.isProduction())
 ;
 
+Encore.configureWatchOptions((watchOptions) => {
+    watchOptions.poll = 250;
+});
+
 module.exports = Encore.getWebpackConfig();
