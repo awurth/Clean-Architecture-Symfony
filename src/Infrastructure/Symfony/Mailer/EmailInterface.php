@@ -4,13 +4,18 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Symfony\Mailer;
 
+use Symfony\Component\Mime\RawMessage;
+
 interface EmailInterface
 {
+    /**
+     * @param array<string, mixed> $context
+     */
     public function context(array $context): self;
 
-    public function from(...$addresses): self;
+    public function from(string ...$addresses): self;
 
-    public function getEmail();
+    public function getEmail(): RawMessage;
 
     public function html(string $body): self;
 
@@ -22,5 +27,5 @@ interface EmailInterface
 
     public function textTemplate(string $template): self;
 
-    public function to(...$addresses): self;
+    public function to(string ...$addresses): self;
 }

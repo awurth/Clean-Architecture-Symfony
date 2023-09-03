@@ -14,7 +14,7 @@ final readonly class QueryBus implements QueryBusInterface
     {
     }
 
-    public function query(object $query)
+    public function query(object $query): mixed
     {
         $envelope = $this->queryBus->dispatch($query);
 

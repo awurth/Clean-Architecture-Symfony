@@ -6,8 +6,14 @@ namespace App\Domain;
 
 trait RaisesEvents
 {
+    /**
+     * @var object[]
+     */
     protected array $events = [];
 
+    /**
+     * @return object[]
+     */
     final public function popEvents(): array
     {
         $events = $this->events;

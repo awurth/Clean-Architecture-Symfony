@@ -6,8 +6,8 @@ namespace App\Application\UseCase\User\Register;
 
 final class RegisterRequest
 {
-    public $email;
-    public $plainPassword;
-    public $firstname;
-    public $lastname;
+    public mixed $email;
+    public mixed $plainPassword;
+    public mixed $firstname;
+    public mixed $lastname;
 }

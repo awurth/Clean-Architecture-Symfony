@@ -19,12 +19,12 @@ abstract readonly class Id implements \Stringable
         return $this->toString();
     }
 
-    public static function fromString(string $id): self
+    public static function fromString(string $id): static
     {
         return new static($id);
     }
 
-    public static function generate(): self
+    public static function generate(): static
     {
         return new static((string)Uuid::v4());
     }

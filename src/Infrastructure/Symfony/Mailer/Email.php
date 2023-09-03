@@ -22,7 +22,7 @@ final readonly class Email implements EmailInterface
         return $this;
     }
 
-    public function from(...$addresses): self
+    public function from(string ...$addresses): self
     {
         $this->email->from(...$addresses);
 
@@ -69,7 +69,7 @@ final readonly class Email implements EmailInterface
         return $this;
     }
 
-    public function to(...$addresses): self
+    public function to(string ...$addresses): self
     {
         $this->email->to(...$addresses);
 

@@ -8,5 +8,8 @@ interface EventBusInterface
 {
     public function dispatch(object $event): void;
 
+    /**
+     * @param object[] $events
+     */
     public function dispatchAll(array $events): void;
 }
