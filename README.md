@@ -4,5 +4,4 @@
 - Review infrastructure organization
 - Review namespaces
 - Tests
-- Psalm/PHPStan
 - Validation
