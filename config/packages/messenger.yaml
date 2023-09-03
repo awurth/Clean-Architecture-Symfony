@@ -1,8 +1,5 @@
 framework:
     messenger:
-        # reset services after consuming messages
-        reset_on_message: true
-
         # Uncomment this (and the failed transport below) to send failed messages to this transport for later handling.
         # failure_transport: failed
 
@@ -29,3 +26,11 @@ framework:
                 default_middleware: allow_no_handlers
                 middleware:
                     - dispatch_after_current_bus
+
+# when@test:
+#    framework:
+#        messenger:
+#            transports:
+#                # replace with your transport name here (e.g., my_transport: 'in-memory://')
+#                # For more Messenger testing tools, see https://github.com/zenstruck/messenger-test
+#                async: 'in-memory://'
